@@ -1,0 +1,8 @@
+title: illusionistDev
+description: My personal website
+url: "https://illusionistdev.com"
+
+collections:
+  projects:
+    output: true
+    permalink: /project/:name/

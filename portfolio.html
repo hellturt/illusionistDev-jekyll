@@ -1,0 +1,100 @@
+---
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <link rel="icon" type="image/png" href="{{ '/assets/img/favicon.png' | relative_url }}">
+
+  <title>illusionistDev | Portfolio</title>
+</head>
+
+<body>
+
+  <main id="primary" class="site-portfolio">
+
+    <section class="pf_header">
+      <div class="container">
+        <div>
+          <a href="{{ '/' | relative_url }}">&#x25c0; Back home</a>
+          <h2>Our latest <span>work</span>.</h2>
+        </div>
+      </div>
+
+      <div id="bg-work-animation"></div>
+    </section>
+
+    <section class="work_list">
+
+      <div class="container">
+        {% assign projects = site.projects | sort: "order" | reverse %}
+        {% for project in projects %}
+
+        {% assign position = forloop.index0 | modulo: 2 %}
+
+        {% if position == 0 %}
+        <div class="pf-row">
+          {% endif %}
+
+          <a class="pf" href="{{ project.url | relative_url }}">
+
+            <div class="dot {% if position == 1 %}reverse{% endif %}"></div>
+
+            <div class="left">
+              <img src="{{ project.thumbnail | relative_url }}" alt="{{ project.title }}">
+            </div>
+
+            <div class="right">
+              <h1>{{ project.title }}</h1>
+              <p>{{ project.portfolio_type }}</p>
+            </div>
+
+          </a>
+
+          {% if position == 1 or forloop.last %}
+        </div>
+        {% endif %}
+
+        {% endfor %}
+
+      </div>
+
+    </section>
+
+    <div class="mid-line"></div>
+
+  </main>
+
+  <footer id="colophon" class="site-footer">
+    <p>
+      Copyright © {{ site.time | date: "%Y" }} illusionistDev.<br>
+      All rights reserved.
+    </p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.2/lottie.min.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+      const animation = lottie.loadAnimation({
+        container: document.getElementById('bg-work-animation'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: "{{ '/assets/img/abstraction.json' | relative_url }}"
+      });
+
+    });
+  </script>
+
+</body>
+
+</html>
