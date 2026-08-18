@@ -1,6 +1,7 @@
 title: illusionistDev
 description: My personal website
 url: "https://illusionistdev.com"
+baseurl: ""
 
 collections:
   projects:
