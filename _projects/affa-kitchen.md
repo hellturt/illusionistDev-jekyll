@@ -9,7 +9,7 @@ project_types:
   - Web Development
   - SEO
 
-completion: June 2025
+completion: July 2025
 url_external: https://affakitchen.com/
 image: /assets/img/project/affa_kitchen.png
 thumbnail: /assets/img/thumbnail/affa_kitchen.png
